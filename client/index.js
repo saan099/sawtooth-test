@@ -5,7 +5,7 @@ const {createContext, CryptoFactory} = require('sawtooth-sdk/signing')
 const context = createContext('secp256k1')
 const privateKey = context.newRandomPrivateKey()
 
-
+const restapiURL='http://localhost:8024'
 const signer =new CryptoFactory(context).newSigner(privateKey)
 console.info("Signer ",signer)
 console.log("priv- ",privateKey)
@@ -108,7 +108,7 @@ console.log("BatchListAsbytes- ",batchListBytes)
 const request = require('request')
 
 request.post({
-    url: 'http://localhost:8024/batches',
+    url: restapiURL+'/batches',
     body: batchListBytes,
     headers: {'Content-Type': 'application/octet-stream'}
 }, (err, response) => {
