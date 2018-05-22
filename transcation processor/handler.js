@@ -4,6 +4,7 @@ const { createHash } = require('crypto')
 const { TransactionHandler } = require('sawtooth-sdk/processor/handler')
 const { InvalidTransaction } = require('sawtooth-sdk/processor/exceptions')
 const { TransactionHeader } = require('sawtooth-sdk/protobuf')
+const cbor = require('cbor')
 
 const getAddress = (key, length = 64) => {
     return createHash('sha512').update(key).digest('hex').slice(0, length)
@@ -20,15 +21,17 @@ class TestTX extends TransactionHandler {
     }
 
     apply (transactionProcessRequest, stateStore) {
-        let header = TransactionHeader.decode(transactionProcessRequest.header)
+        console.log("REACHING",transactionProcessRequest)
+        let header = transactionProcessRequest.header
         let signer = header.signerPublicKey
-    
-        let payload=JSON.parse(transactionProcessRequest.payload)
-        console.log("PAYLOAD- ",payload)
-
-
-        return
         
+        let payload=cbor.decode(transactionProcessRequest.payload)
+        console.log("PAYLOAD- ",payload)
+        return Promise.resolve().then(() => {
+            return 'awesome'
+          })
+
+        throw new InvalidTransaction('No Function called')
       }
     
 }

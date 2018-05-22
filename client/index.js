@@ -10,7 +10,7 @@ const signer =new CryptoFactory(context).newSigner(privateKey)
 console.info("Signer ",signer)
 console.log("priv- ",privateKey)
 
-console.log("First encryption- ",signer.sign("abcdefgh"))
+console.log("First signature- ",signer.sign("abcdefgh"))
 
 var hexPriv=privateKey.asHex();
 
@@ -25,7 +25,7 @@ var privateBuffer = {
 
 var signer1 = new CryptoFactory(context).newSigner(privateBuffer);
 console.log("Signer-",signer1);
-console.log("Second encryption- ",signer1.sign("abcdefgh"))
+console.log("Second signature- ",signer1.sign("abcdefgh"))
 
 
 
