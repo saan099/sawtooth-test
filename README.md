@@ -6,8 +6,15 @@ Simulate and check transaction processor and client's transactional communicatio
 
 ## Prerequsites 
 
-1) Run sawtooth network
-2) node version 8.4.0>= & <9.0.0
+1) node version 8.4.0>= & <9.0.0
+2) docker compose installed
+
+## Start Docker network
+
+In root directory-
+```
+docker-compose up
+```
 
 ## Start Processor
 
