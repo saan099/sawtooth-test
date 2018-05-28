@@ -1,8 +1,8 @@
-# sawtooth-test
+# sawtooth-test(Nodejs)
 
 ## Purpose
  
-Simulate and check transaction processor and client's transactional communication.
+Simulate and check nodejs transaction processor and client's transactional communication.
 
 ## Prerequsites 
 
