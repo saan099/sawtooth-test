@@ -1,8 +1,8 @@
-# sawtooth-test
+# sawtooth-test(Nodejs&Golang)
 
 ## Purpose
  
-Simulate and check transaction processor and client's transactional communication.
+Simulate and check Golang transaction processor and client's transactional communication.
 
 ## Prerequsites 
 
@@ -16,12 +16,12 @@ In root directory-
 docker-compose up
 ```
 
-## Start Processor
+## Build & Start Processor
 
 ```
-cd transcation\ processor
-npm install
-node index
+cd tp
+docker build -t my-tp .
+docker run -it --network my_myblockchain my-tp
 ```
 
 ## Do a transaction

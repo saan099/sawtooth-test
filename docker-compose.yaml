@@ -1,5 +1,8 @@
 version: '2.1'
 
+networks: 
+  myblockchain:
+
 services:
 
   validator:
@@ -23,12 +26,17 @@ services:
           --bind component:tcp://eth0:4004 \
           --bind network:tcp://eth0:8800
       "
+    networks: 
+      - myblockchain
+
   settings-tp:
     image: hyperledger/sawtooth-settings-tp:1.0
     container_name: my-settings-tp
     depends_on:
       - validator
     entrypoint: settings-tp -vv -C tcp://validator:4004
+    networks: 
+      - myblockchain
 
   rest-api:
     image: hyperledger/sawtooth-rest-api:1.0
@@ -43,3 +51,5 @@ services:
       sawtooth-rest-api -vv
         --connect tcp://validator:4004
         --bind rest-api:8008
+    networks: 
+      - myblockchain

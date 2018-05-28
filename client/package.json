@@ -11,6 +11,7 @@
   "dependencies": {
     "cbor": "^4.0.0",
     "crypto": "^1.0.1",
+    "protobufjs": "^6.8.6",
     "request": "^2.86.0",
     "sawtooth-sdk": "^1.0.4"
   }
