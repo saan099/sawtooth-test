@@ -1,27 +1,27 @@
-# sawtooth-test(Nodejs)
+# sawtooth-test(Python-TP)
 
 ## Purpose
  
-Simulate and check nodejs transaction processor and client's transactional communication.
+Simulate and check Python based transaction processor and client's transactional communication.
 
 ## Prerequsites 
 
 1) node version 8.4.0>= & <9.0.0
 2) docker compose installed
+3) protobuf installed(version 3).
+
+## Build Python proto files 
+
+In root directory-
+```
+protoc -I=./proto --python_out=./tp/python_proto  ./proto/mydata.proto
+``` 
 
 ## Start Docker network
 
 In root directory-
 ```
 docker-compose up
-```
-
-## Start Processor
-
-```
-cd transcation\ processor
-npm install
-node index
 ```
 
 ## Do a transaction

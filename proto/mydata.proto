@@ -1,0 +1,8 @@
+
+syntax = "proto3";
+package proto;
+
+message Data {
+    string data1 = 1;
+    string data2 = 2;
+}

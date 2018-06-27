@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2.0'
 
 networks: 
   myblockchain:
@@ -51,5 +51,19 @@ services:
       sawtooth-rest-api -vv
         --connect tcp://validator:4004
         --bind rest-api:8008
+    networks: 
+      - myblockchain
+
+  python_tp:
+    build:
+      context: .
+      dockerfile: ./tp/Dockerfile
+    image: python_tp
+    container_name: python_tp-local
+    depends_on:
+      - validator
+    command: python3 main.py -C tcp://validator:4004
+    volumes: 
+      - ./tp:/project
     networks: 
       - myblockchain
